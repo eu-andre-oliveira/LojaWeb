@@ -32,7 +32,7 @@ namespace LojaWeb.DAO
         }
 
         public Produto BuscaPorId(int id)
-        {
+        {            
             return session.Get<Produto>(id);
         }
 

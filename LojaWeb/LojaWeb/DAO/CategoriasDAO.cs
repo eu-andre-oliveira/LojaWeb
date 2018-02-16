@@ -34,7 +34,7 @@ namespace LojaWeb.DAO
 
         public Categoria BuscaPorId(int id)
         {
-            return session.Get<Categoria>(id);             
+            return session.Get<Categoria>(id);
         }
 
         public IList<Categoria> Lista()

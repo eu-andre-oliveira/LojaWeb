@@ -2,7 +2,6 @@
 using LojaWeb.Entidades;
 using LojaWeb.Infra;
 using LojaWeb.Models;
-using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +11,10 @@ using System.Web.Mvc;
 namespace LojaWeb.Controllers
 {
     public class CategoriasController : Controller
-    {        //
+    {
+        //
         // GET: /Categorias/
-        private CategoriasDAO dao;
+        CategoriasDAO dao;
 
         public CategoriasController(CategoriasDAO dao)
         {
@@ -35,16 +35,17 @@ namespace LojaWeb.Controllers
         public ActionResult Adiciona(Categoria categoria)
         {
             dao.Adiciona(categoria);
-            return RedirectToAction("Index");
+            return RedirectToAction("Visualiza", new { id = categoria.Id });
         }
 
         public ActionResult Remove(int id)
-        {     
+        {
+     
             return RedirectToAction("Index");
         }
 
         public ActionResult Visualiza(int id)
-        {        
+        {
             Categoria categoria = dao.BuscaPorId(id);
             return View(categoria);
         }

@@ -10,23 +10,24 @@ namespace LojaWeb.Filters
     public class TransactionFilter : ActionFilterAttribute
     {
         private ISession session;
-        
+
         public TransactionFilter(ISession session)
         {
             this.session = session;
         }
-        public override void OnActionExecuting(ActionExecutingContext contexto )
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             session.BeginTransaction();
         }
-
-        public override void OnActionExecuted(ActionExecutedContext contexto)
+        public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
-            if (contexto.Exception == null)
+            if (filterContext.Exception == null)
                 session.Transaction.Commit();
             else
                 session.Transaction.Rollback();
+
             session.Close();
+
         }
     }
 }

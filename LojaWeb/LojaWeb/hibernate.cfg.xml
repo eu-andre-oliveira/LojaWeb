@@ -6,13 +6,13 @@
       NHibernate.Connection.DriverConnectionProvider
     </property>
     <property name="dialect">
-      NHibernate.Dialect.MsSql2012Dialect
+      NHibernate.Dialect.MySQLDialect
     </property>
     <property name="connection.driver_class">
-      NHibernate.Driver.SqlClientDriver
+      NHibernate.Driver.MySqlDataDriver
     </property>
     <property name="connection.connection_string">
-      Server=localhost;Database=Voluntarios; Uid=sao; Pwd=rosemberg;
+      Server=localhost;Database=loja; Uid=root; Pwd=admin;
     </property>
     <property name="hbm2ddl.auto">update</property>
     <property name="show_sql">true</property>

@@ -2,7 +2,6 @@
 using LojaWeb.DAO;
 using LojaWeb.Entidades;
 using LojaWeb.Infra;
-using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +14,7 @@ namespace LojaWeb.Controllers
     {
         //
         // GET: /Produtos/
+
         private ProdutosDAO dao;
 
         public ProdutosController(ProdutosDAO dao)
@@ -37,7 +37,7 @@ namespace LojaWeb.Controllers
         public ActionResult Adiciona(Produto produto)
         {
             dao.Adiciona(produto);
-            return RedirectToAction("Index");
+            return RedirectToAction("Visualiza", new { id = produto.Id});
         }
 
         public ActionResult Remove(int id)
@@ -46,7 +46,7 @@ namespace LojaWeb.Controllers
         }
 
         public ActionResult Visualiza(int id)
-        {          
+        {
             Produto p = dao.BuscaPorId(id);
             return View(p);
         }
