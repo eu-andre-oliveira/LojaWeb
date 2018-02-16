@@ -36,6 +36,8 @@ namespace LojaWeb.Controllers
 
         public ActionResult Adiciona(Produto produto)
         {
+            if (produto.Categoria.Id == 0)
+                produto.Categoria = null;
             dao.Adiciona(produto);
             return RedirectToAction("Visualiza", new { id = produto.Id});
         }
@@ -53,6 +55,8 @@ namespace LojaWeb.Controllers
 
         public ActionResult Atualiza(Produto produto)
         {
+            if (produto.Categoria.Id == 0)
+                produto.Categoria = null;
             dao.Atualiza(produto);
             return RedirectToAction("Index");
         }
